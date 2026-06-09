@@ -19,3 +19,6 @@ Use a SQL database for persistence.
 
 Assumption:
 
+model -> repo -> unit of work -> service -> router
+
+added: middleware, exception handler, text, context management, ....
