@@ -8,7 +8,7 @@ class LogRepository():
         self._db = db
     
     def create(self, client_id:int, message:str) -> Log:
-        entity = Log(client_id=client_id, message=message, created_at=datetime.now)
+        entity = Log(client_id=client_id, message=message, created_at=datetime.now())
         self._db.add(entity)
         self._db.flush()
         return entity

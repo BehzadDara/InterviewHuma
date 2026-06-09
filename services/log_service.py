@@ -14,5 +14,5 @@ class LogService():
         return entity
     
     def get_last_20(self, client_id: int) -> list[Log]:
-        entities = self._uow.logs.get(input.client_id)
+        entities = self._uow.logs.get(client_id, 20)
         return entities
