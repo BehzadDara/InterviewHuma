@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 from models.log import Log
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class LogRepository():
     def __init__(self, db:Session):
@@ -22,3 +22,12 @@ class LogRepository():
             .all()
             )
          return entities
+    
+    def count_last_minute(self, client_id:int) -> int:
+         count = (
+             self._db.query(Log)
+            .filter(Log.client_id == client_id)
+            .filter(Log.created_at >= datetime.now() - timedelta(minutes=1))
+            .count()
+         )
+         return count
